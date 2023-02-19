@@ -1,0 +1,54 @@
+{
+    "SubCategoryData":[
+        {
+            "Cid":1,
+            "SCid":1,
+            "SubCategoryName":"Leptop" 
+        },
+        {
+            "Cid":1,
+            "SCid":2,
+            "SubCategoryName":"Computer" 
+        },
+        {
+            "Cid":2,
+            "SCid":3,
+            "SubCategoryName":"Men's Wear" 
+        },
+        {
+            "Cid":2,
+            "SCid":4,
+            "SubCategoryName":"Women's Wear" 
+        },
+        {
+            "Cid":3,
+            "SCid":5,
+            "SubCategoryName":"Cookware Sets" 
+        },
+        {
+            "Cid":3,
+            "SCid":6,
+            "SubCategoryName":"Kitchen Sets" 
+        },
+        {
+            "Cid":4,
+            "SCid":7,
+            "SubCategoryName":"Oppo" 
+        },
+        {
+            "Cid":4,
+            "SCid":8,
+            "SubCategoryName":"Vivo" 
+        },
+        {
+            "Cid":5,
+            "SCid":9,
+            "SubCategoryName":"Hair Shampoo" 
+        },
+        {
+            "Cid":5,
+            "SCid":10,
+            "SubCategoryName":"Hair Oil" 
+        }
+    ]
+}

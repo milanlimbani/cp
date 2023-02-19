@@ -1,0 +1,222 @@
+div {
+    padding: 5px;
+}
+
+/* button hover css */
+
+.btn1 {
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn1:hover {
+    background-color: #59a1ee;
+    color: white;
+    border: none;
+}
+
+
+.container {
+    
+    margin: 7% auto;
+    width: 40%;
+    background-color: white;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, .3);
+}
+body{
+    background-color: whitesmoke;
+   
+}
+
+/* header css */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+ 
+  
+   a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+  }
+  
+   a:hover {
+    background-color: #111;
+  }
+  #btnlogout {
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+  #btnlogout:hover{
+    background-color: #59a1ee;
+            color: white;
+            border: none;
+  }
+
+/* Disply Product */
+.mystyle {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+#card{
+  display: inline-flex;
+  width: 99% !important;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+#card1{
+  display: inline-flex;
+  width: 99% !important;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+
+#card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#card button:hover {
+  opacity: 0.7;
+}
+  /* Input Tag Css */
+  input{
+    height: 20px;
+  }
+  button {
+    height: 26px;
+}
+  
+/* Image Slider */
+.slidershow{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.slider{
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.slides{
+  width: 550%;
+  height: 115%;
+  display: flex;
+}
+.slides input{
+  display: none;
+}
+.slide{
+  width: 20%;
+  transition: 2s;
+}
+.slide img{
+  width: 90%;
+  height: 60%;
+}
+.navigation-manual{
+  position: absolute;
+  width: 1254px;
+  margin-top: -195px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn{
+  border: 2px solid grey;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+.manual-btn:hover{
+  background: grey;
+}
+#radio1:checked ~ .first{
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+  margin-left: -20%;
+}
+#radio3:checked ~ .first{
+  margin-left: -40%;
+}
+#radio4:checked ~ .first{
+  margin-left: -60%;
+}
+#radio5:checked ~ .first{
+  margin-left: -80%;
+}
+.navigation-auto{
+  position:absolute;
+  display: flex;
+  width: 1242px;
+  justify-content: center;
+  margin-top: 385px;
+}
+.navigation-auto div{
+  border:2px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+  margin-right: 40px;
+
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+  background: gray;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+  background: gray;
+}#radio3:checked ~ .navigation-auto .auto-btn3{
+  background: gray;
+}#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: gray;
+}#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: gray;
+}

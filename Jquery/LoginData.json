@@ -1,0 +1,14 @@
+{
+    "LoginDetails":[
+        {
+            "Uid":1,
+            "Email":"milan@gmail.com",
+            "Password":"12345678"
+        },
+        {
+            "Uid":2,
+            "Email":"raj@gmail.com",
+            "Password":"12345678"
+        }
+    ]
+}

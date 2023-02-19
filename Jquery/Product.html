@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Site.css">
+</head>
+
+<body>
+    <ul id="menu">
+        <!-- <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li> -->
+        <input type="button" id="btnlogout" value="Logout"
+            style="margin:12px;float:right;height: 28px;border-radius: 2px !important;width: 55px;border-radius: 2px;">
+        <span style="float: right;color: whitesmoke;padding-right: 12px;margin: 18px;"></span>
+        <button type="submit" id="btnsearch" style="float: right;padding-right: 12px;margin-top: 15px"><i class="fa fa-search"></i></button>
+        <input type="text" name="search" maxlength="60" placeholder="Search..." style="float: right;margin-top: 15px;">
+    </ul>
+
+
+
+    
+    <div id="card" style="display: inline-flex;">
+
+    </div>
+    </div>
+    </div>
+    <span id="rupee" style="visibility: hidden;" >&#8377;</span> 
+    <script type="text/javascript" scr="Jquery3.6.3.js"></script>
+    <script>
+
+        loaddata();
+        let value = sessionStorage.getItem("Email");
+
+        if (value != undefined) {
+            let spp = document.getElementsByTagName("span");
+            var sub = value.substring(0).split("@")[0];
+            spp[0].innerText = "Welcome " + sub;
+
+        } else {
+            window.location.href = "LoginPage.html";
+        }
+        btnlogout = document.getElementById("btnlogout");
+        btnlogout.onclick = function () {
+            sessionStorage.removeItem("Email");
+            window.location.href = "LoginPage.html";
+        }
+
+
+
+
+        function loaddata() {
+            var queryString = location.search;
+            var parameter = queryString.substring(1).split("");
+            var id = parameter[0];
+            // alert(id);
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open("GET", "Product.json", true);
+            httpRequest.getResponseHeader("Content-type", "application/json");
+            httpRequest.onload = function () {
+                var data = JSON.parse(this.responseText);
+                console.clear();
+                var menu = document.getElementById("menu");
+                var carddata = document.getElementById("card");
+                var productnames = document.getElementById("productname");
+                data.ProductDetails.forEach(element => {
+                    if (id == element.SCid) {
+
+                        var link = document.createElement("a");
+                        let href = "Product.html?" + element.SCid;
+                        var ccid = element.Cid;
+                        link.innerText = element.ProductName;
+
+                        var subcatid = element.SCid;
+                        menu.appendChild(link);
+
+
+                        var d=document.createElement("div");
+                        d.classList.add("mystyle");
+                        var link = document.createElement("h3");
+                        link.innerText = element.ProductName;
+                       d.appendChild(link);
+                        
+                        var elem = document.createElement("img");
+                        elem.setAttribute("src", element.ProductImage);
+                        elem.setAttribute("width", "200px");
+                      d.appendChild(elem);
+
+                       
+                        var link = document.createElement("h3");
+                        var rupees = document.getElementById("rupee").innerHTML;
+                        link.innerText = rupees + element.ProductPrice;
+                      d.appendChild(link);
+
+
+                      carddata.appendChild(d);
+                        
+                  
+
+                    }
+
+
+                });
+
+
+
+            }
+            httpRequest.send();
+        }
+
+
+
+    </script>
+</body>
+
+</html>

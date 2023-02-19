@@ -1,0 +1,25 @@
+{
+    "CategoryData":[
+        {
+            "Cid":1,
+            "CName":"Electronics"
+            
+        },
+        {
+            "Cid":2,
+            "CName":"Fashion"
+        },
+        {
+            "Cid":3,
+            "CName":"Grocery"
+        },
+        {
+            "Cid":4,
+            "CName":"Mobiles"
+        },
+        {
+            "Cid":5,
+            "CName":"Beauty"
+        }
+    ]
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Site.css">
+</head>
+
+<body>
+
+    <ul id="menu">
+        <!-- <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li> -->
+    
+    
+        <input type="button" id="btnlogout" value="Logout"
+            style="margin:12px;float:right;height: 28px;border-radius: 2px !important;width: 55px;border-radius: 2px;">
+            <span style="float: right;color: whitesmoke;padding-right: 12px;margin: 18px;"></span>
+            <button type="button" id="btnsearch" onclick="mysearchfun()" style="float: right;padding-right: 12px;margin-top: 15px"><i class="fa fa-search"></i></button>
+            <input type="text" name="search" id="searchdata" maxlength="60" placeholder="Search..." style="float: right;margin-top: 15px;">
+    </ul>
+    <div class="slidershow">
+  <div class="slider">
+    <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        <input type="radio" name="radio-btn" id="radio5">
+
+        <div class="slide first">
+            <img src="Images/sliderimg1.jfif" alt="img1">
+        </div>
+        <div class="slide">
+            <img src="Images/sliderimg2.jfif" alt="img2">
+        </div>
+        <div class="slide">
+            <img src="Images/sliderimg3.jfif" alt="img3">
+        </div>
+        <div class="slide">
+            <img src="Images/sliderimg4.jfif" alt="img4">
+        </div>
+        <div class="slide">
+            <img src="Images/sliderimg5.jfif" alt="img5">
+        </div>
+
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+            <div class="auto-btn5"></div>
+        </div>
+    </div>
+    <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+        <label for="radio5" class="manual-btn"></label>
+    </div>
+  </div>
+</div>
+<hr>
+<h4 style="text-align: center;">Searching Data</h4>
+<hr>
+<div id="card1" style="display: inline-flex;">
+
+</div>
+<hr>
+    <div id="card" style="display: inline-flex;">
+
+    </div>
+    <span id="rupee" style="visibility: hidden;" >&#8377;</span> 
+    <script type="text/javascript" scr="Jquery3.6.3.js"></script>
+    <script>
+        var count =1;
+        setInterval(function(){
+            document.getElementById('radio'+count).checked =true;
+            count++
+            if(count>5)
+            {
+                count =1;
+            }
+        },5000);
+        loaddata();
+        loadallproduct();
+        let value = sessionStorage.getItem("Email");
+
+        if (value != undefined) {
+            let spp = document.getElementsByTagName("span");
+            var sub = value.substring(0).split("@")[0];
+            spp[0].innerText = "Welcome " + sub;
+
+        } else {
+            window.location.href = "LoginPage.html";
+        }
+        btnlogout = document.getElementById("btnlogout");
+        btnlogout.onclick = function () {
+            sessionStorage.removeItem("Email");
+            window.location.href = "LoginPage.html";
+        }
+
+        function loaddata() {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open("GET", "Category.json", true);
+            httpRequest.getResponseHeader("Content-type", "application/json");
+            httpRequest.onload = function () {
+                // alert(this.responseText);
+                var data = JSON.parse(this.responseText);
+                console.clear();
+                var menu = document.getElementById("menu");
+                data.CategoryData.forEach(element => {
+                    var link = document.createElement("a");
+                     let href = "SubCategory.html?" + element.Cid;
+                    link.innerText = element.CName;
+                    link.setAttribute("href", href);
+                    menu.appendChild(link);
+                });
+                
+            }
+            httpRequest.send();
+        }
+
+        function loadallproduct() {
+         
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open("GET", "Product.json", true);
+            httpRequest.getResponseHeader("Content-type", "application/json");
+            httpRequest.onload = function () {
+                var data = JSON.parse(this.responseText);
+                console.clear();
+                var menu = document.getElementById("menu");
+                var carddata = document.getElementById("card");
+                var productnames = document.getElementById("productname");
+                data.ProductDetails.forEach(element => {
+                        var d=document.createElement("div");
+                        d.classList.add("mystyle");
+                        var link = document.createElement("h3");
+                        link.innerText = element.ProductName;
+                       d.appendChild(link);
+                        
+                        var elem = document.createElement("img");
+                        elem.setAttribute("src", element.ProductImage);
+                        elem.setAttribute("width", "150px");
+                        elem.setAttribute("height", "150px");
+                      d.appendChild(elem);
+                        var rupees = document.getElementById("rupee").innerHTML;
+                      
+                        var link = document.createElement("h3");
+                        link.innerText = rupees + element.ProductPrice;
+                      d.appendChild(link);
+
+                      carddata.appendChild(d);
+                        
+                });
+            }
+            httpRequest.send();
+        }
+
+       function mysearchfun()
+       {
+        
+        var searchdata = document.getElementById("searchdata").value;
+        alert(searchdata);
+        var httpRequest = new XMLHttpRequest();
+            httpRequest.open("GET", "Product.json", true);
+            httpRequest.getResponseHeader("Content-type", "application/json");
+            httpRequest.onload = function () {
+                var data = JSON.parse(this.responseText);
+                console.clear();
+                var menu = document.getElementById("menu");
+                var carddata = document.getElementById("card1");
+                var productnames = document.getElementById("productname");
+                data.ProductDetails.forEach(element => {
+                    if(searchdata == element.ProductName)
+                    {
+                        var d=document.createElement("div");
+                        d.classList.add("mystyle");
+                        var link = document.createElement("h3");
+                        link.innerText = element.ProductName;
+                       d.appendChild(link);
+                        
+                        var elem = document.createElement("img");
+                        elem.setAttribute("src", element.ProductImage);
+                        elem.setAttribute("width", "200px");
+                      d.appendChild(elem);
+                        var rupees = document.getElementById("rupee").innerHTML;
+                      
+                        var link = document.createElement("h3");
+                        link.innerText = rupees + element.ProductPrice;
+                      d.appendChild(link);
+
+                      carddata.appendChild(d);
+                    }      
+                });
+            }
+            httpRequest.send();
+       }
+    
+    </script>
+</body>
+
+</html>
